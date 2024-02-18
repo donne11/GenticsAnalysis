@@ -1,15 +1,6 @@
--- CS3200: Database Design
 -- GAD: The Genetic Association Database
 
-
--- Write a query to answer each of the following questions
--- Save your script file as cs3200_hw2_yourname.sql (no spaces)
--- Submit this file for your homework submission
-
-
 use gad;
-
-
 
 -- 1. 
 -- Explore the content of the various columns in your gad table.
@@ -25,13 +16,6 @@ WHERE gene_name = "G protein-coupled receptor" OR gene_name LIKE "%G protein-cou
 ORDER BY gene;
 
 
-
-
-
-
-
-
-
 -- 2. 
 -- How many records are there for each disease class?
 -- Output your list from most frequent to least frequent
@@ -40,7 +24,6 @@ SELECT disease_class, COUNT(*) AS number_of_records
 FROM gad
 GROUP BY disease_class
 ORDER BY number_of_records DESC;
-
 
 
 -- 3. 
@@ -52,7 +35,6 @@ SELECT DISTINCT phenotype
 FROM gad
 WHERE disease_class = "IMMUNE"
 ORDER BY phenotype ASC;
-
 
 
 -- 4.
@@ -70,8 +52,6 @@ HAVING num_records > 59
 ORDER BY num_records DESC;
 
 
-
-
 -- 5.
 -- List the gene symbol, gene name, and chromosome attributes related
 -- to genes positively linked to asthma (association = Y).
@@ -82,8 +62,6 @@ SELECT DISTINCT gene AS gene_symbol, gene_name, chromosome
 FROM gad
 WHERE association = "Y" AND (phenotype = "Asthma" OR phenotype LIKE "%Asthma%")
 ORDER BY gene_symbol;
-
-
 
 
 -- 6. 
@@ -97,8 +75,6 @@ FROM gad
 WHERE (chromosome IS NOT NULL AND dna_start > 0)
 GROUP BY chromosome
 ORDER BY CAST(chromosome AS SIGNED);
-
-
 
 
 -- 7 
@@ -115,8 +91,6 @@ GROUP BY gene
 ORDER BY COUNT(*) DESC;
 
 
-
-
 -- 8. 
 -- Which genes have a total of at least 100 positive association records (across all phenotypes)?
 -- Give the gene symbol, gene name, and the number of associations
@@ -127,8 +101,6 @@ WHERE association = "Y"
 GROUP BY gene, gene_name
 HAVING COUNT(*) > 99
 ORDER BY num_records DESC;
-
-
 
 
 -- 9. 
@@ -142,8 +114,6 @@ WHERE population IS NOT NULL AND population != ""
 GROUP BY population
 ORDER BY number_of_records DESC
 LIMIT 5;
-
-
 
 
 -- 10. 
@@ -160,8 +130,6 @@ SELECT DISTINCT gene
 FROM gad
 WHERE (phenotype = "Asthma" OR phenotype LIKE "%Asthma%")) AND association = "Y"
 ORDER BY phenotype;
-
-
 
 
 -- 11. 
@@ -182,8 +150,6 @@ WHERE phenotype != "Asthma"
 GROUP BY phenotype
 ORDER BY number_of_phenotypes DESC
 LIMIT 5;
-
-
 
 
 -- 12. 
